@@ -1,0 +1,54 @@
+const string Rock = "Rock";
+const string Paper = "Paper";
+const string Scissors = "Scissors";
+Console.Write("Choose [r]rock, [p]paper or [s]scissors: ");
+string playerMoove = Console.ReadLine();
+if (playerMoove == "r" || playerMoove == "rock")
+{
+    playerMoove = Rock;
+}
+else if (playerMoove == "p" || playerMoove == "paper")
+{
+    playerMoove = Paper;
+}
+else if (playerMoove == "s" || playerMoove == "scissors")
+{
+    playerMoove = Scissors;
+}
+else
+{
+    Console.WriteLine("Invalid input. Try again...");
+    return;
+}
+Random random = new Random();
+int compRandomNum = random.Next(1, 4);
+string compMoove = "";
+switch (compRandomNum)
+{
+    case 1:
+        compMoove = Rock;
+        break;
+    case 2:
+        compMoove = Paper;
+        break;
+    case 3:
+        compMoove = Scissors;
+        break;
+}
+Console.WriteLine($"The computer choose {compMoove}.");
+if((playerMoove == Rock && compMoove == Scissors) ||
+        (playerMoove == Paper && compMoove == Rock) ||
+        (playerMoove == Scissors &&  compMoove == Paper))
+{
+    Console.WriteLine("You win");
+}
+else if ((playerMoove == Rock && compMoove == Paper) ||
+        (playerMoove == Paper && compMoove == Scissors) ||
+        (playerMoove == Scissors && compMoove == Rock))
+{
+    Console.WriteLine("You lose.");
+}
+else
+{
+    Console.WriteLine("Ths game was a draw.");
+}
